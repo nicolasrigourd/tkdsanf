@@ -1,0 +1,53 @@
+
+.itemalum {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid #6f7070;
+  border-radius: 10px;
+  background: #efecec5f;
+}
+
+.itemalum + .itemalum { margin-top: 8px; }
+
+.itemalum-left { display: flex; align-items: center; gap: 10px; }
+.itemalum-badge {
+  width: 10px; height: 40px; border-radius: 6px;
+}
+.itemalum-badge.green { background: #10b981; }
+.itemalum-badge.yellow { background: #f59e0b; }
+.itemalum-badge.red { background: #ef4444; }
+
+.itemalum-info { display: grid; gap: 2px; }
+.itemalum-name { font-weight: 700; color: #111827; }
+.itemalum-meta { font-size: 12px; color: #6b7280; }
+
+.itemalum-right { display: grid; justify-items: end; gap: 2px; }
+.pill {
+  padding: 4px 8px; border-radius: 999px; color: #fff; font-size: 12px; font-weight: 700;
+}
+.pill.green { background: #10b981; }
+.pill.yellow { background: #f59e0b; }
+.pill.red { background: #ef4444; }
+.left-hint { color: #6b7280; }
+
+
+/* Botón eliminar */
+.btn-remove {
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid #ef4444;
+  background: #e81b1b;
+  color: #fef9f9;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.btn-remove:hover {
+  background: #e97575;
+  color: #f1eded;
+}

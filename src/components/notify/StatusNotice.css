@@ -1,0 +1,89 @@
+/* contenedor flotante arriba-derecha */
+.sn-wrap {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 80;
+}
+
+/* tarjeta base */
+.sn-card {
+  width: min(92vw, 420px);
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  padding: 12px 12px 14px;
+  animation: sn-in .2s ease;
+}
+
+/* cabecera */
+.sn-head {
+  display: grid;
+  grid-template-columns: 16px 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.sn-dot {
+  width: 10px; height: 10px; border-radius: 999px;
+}
+.sn-dot.green  { background: #10b981; }
+.sn-dot.yellow { background: #f59e0b; }
+.sn-dot.red    { background: #ef4444; }
+
+.sn-title {
+  font-weight: 800;
+  color: #111827;
+}
+
+.sn-close {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  color: #6b7280;
+}
+.sn-close:hover { color: #111827; }
+
+.sn-msg {
+  margin-top: 6px;
+  color: #374151;
+  line-height: 1.45;
+}
+
+/* acciones para el rojo */
+.sn-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.sn-btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.sn-btn.primary {
+  background: #ef4444; color: #fff; border-color: #b91c1c;
+}
+.sn-btn.primary:hover { background: #dc2626; }
+
+.sn-btn.ghost {
+  background: #f3f4f6; color: #374151; border-color: #e5e7eb;
+}
+.sn-btn.ghost:hover { background: #e5e7eb; }
+
+/* colores suaves de borde según tipo (opcional) */
+.sn-wrap.green  .sn-card { border-color: #bbf7d0; }
+.sn-wrap.yellow .sn-card { border-color: #fde68a; }
+.sn-wrap.red    .sn-card { border-color: #fecaca; }
+
+/* animación */
+@keyframes sn-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

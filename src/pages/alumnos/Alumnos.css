@@ -1,0 +1,40 @@
+.alumnos-page{ min-height:100vh; display:flex; flex-direction:column; background:#f9fafb; }
+.alumnos-content{ flex:1; padding:16px; width:100%; max-width:1120px; margin:0 auto; }
+
+.alumnos-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+.alumnos-header h2{ font-size:20px; color:#111827; }
+.actions{ display:flex; gap:8px; }
+.btn{ padding:10px 12px; border:none; border-radius:10px; font-weight:600; cursor:pointer; background:#111; color:#fff; }
+.btn:hover{ background:#2563eb; }
+.btn.secondary{ background:#f3f4f6; color:#111; }
+.btn.secondary:hover{ background:#e5e7eb; }
+
+.alumnos-toolbar{ display:flex; gap:10px; margin-bottom:12px; }
+.search{
+  flex:1; padding:10px 12px; border:1px solid #d1d5db; border-radius:10px; font-size:14px;
+}
+.search:focus{ border-color:#2563eb; box-shadow:0 0 0 2px rgba(37,99,235,.15); }
+
+.alumnos-table-wrap{ background:#fff; border:1px solid #e5e7eb; border-radius:12px; overflow:auto; }
+.alumnos-table{ width:100%; border-collapse:collapse; }
+.alumnos-table thead th{
+  text-align:left; font-size:13px; color:#374151; background:#f3f4f6; padding:10px; position:sticky; top:0;
+}
+.alumnos-table tbody td{ padding:10px; border-top:1px solid #f3f4f6; font-size:14px; color:#111827; }
+.row-actions{ display:flex; gap:10px; }
+.link{ background:transparent; border:none; color:#2563eb; cursor:pointer; padding:0; }
+.link:hover{ text-decoration:underline; }
+.link.danger{ color:#e11d48; }
+
+.badge{ padding:4px 8px; border-radius:999px; font-size:12px; font-weight:700; color:#fff; }
+.badge.green{ background:#10b981; }
+.badge.yellow{ background:#f59e0b; }
+.badge.red{ background:#ef4444; }
+
+.empty{ padding:16px; color:#6b7280; }
+
+@media (max-width: 720px){
+  .alumnos-header{ flex-direction:column; align-items:flex-start; gap:8px; }
+  .actions{ width:100%; }
+  .btn, .btn.secondary{ width:100%; }
+}

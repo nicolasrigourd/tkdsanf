@@ -1,0 +1,37 @@
+.btn-finish {
+  background: #dc2626;            /* rojo principal */
+  color: #fff;                    /* texto blanco */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.btn-finish:hover {
+  background: #b91c1c;            /* rojo más oscuro */
+  transform: scale(1.03);
+}
+
+.btn-finish:active {
+  background: #991b1b;            /* aún más oscuro */
+  transform: scale(0.98);
+}
+
+.btn-finish:disabled {
+  background: #f87171;            /* rojo apagado */
+  color: #f3f4f6;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* 🔸 Extra: versión compacta para pantallas chicas */
+@media (max-width: 600px) {
+  .btn-finish {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}

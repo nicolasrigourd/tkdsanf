@@ -1,0 +1,96 @@
+/* Contenedor compacto */
+.ingr-compact {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 10px 12px;                 /* menos padding */
+  margin-bottom: 12px;                /* menos alto total */
+ box-shadow: 0 8px 26px rgba(0,0,0,0.08);
+}
+
+/* Fila superior: fecha izquierda / hora derecha */
+.ingr-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.ingr-fecha {
+  font-size: 13px;                    /* más chico */
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ingr-hora {
+  font-size: 16px;                    /* más compacto que antes */
+  font-weight: 700;
+  color: #14161a;                     /* azul sutil para foco */
+  white-space: nowrap;
+}
+
+/* Fila del formulario (input + botón en línea) */
+.ingr-form-compact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Input más bajo y no tan largo visualmente */
+.ingr-input-compact {
+  flex: 1;
+  min-width: 220px;                   /* evita que se haga demasiado corto */
+  max-width: 380px;                   /* controla ancho para que no se estire */
+  height: 36px;                       /* menos altura */
+  padding: 0 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.ingr-input-compact:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, .15);
+}
+
+/* Botón compacto */
+.ingr-btn-compact {
+  height: 36px;                       /* igual que el input */
+  padding: 0 12px;
+  border: none;
+  border-radius: 10px;
+  background: #111;                   /* negro base */
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, transform .05s;
+}
+.ingr-btn-compact:hover { background: #2563eb; }
+.ingr-btn-compact:active { transform: translateY(1px); }
+
+/* Responsive: en móviles, apilamos el form para no romper líneas */
+@media (max-width: 600px) {
+  .ingr-head {
+    flex-direction: column;           /* fecha y hora una debajo de otra */
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .ingr-form-compact {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .ingr-input-compact {
+    width: 100%;
+    max-width: 100%;
+  }
+  .ingr-btn-compact {
+    width: 100%;
+  }
+}

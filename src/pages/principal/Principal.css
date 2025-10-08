@@ -1,0 +1,208 @@
+/* Estructura de página: header arriba, footer abajo, contenido ocupa el resto */
+/*
+.principal-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+}
+
+
+.principal-content {
+  flex: 1;                  
+  padding: 16px;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.principal-content h2 {
+  font-size: 20px;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+
+.principal-list {
+  margin-top: 12px;
+  padding: 16px;
+  border: 2px dashed #2563eb; 
+  border-radius: 10px;
+  background: #fff;
+}
+.principal-msg {
+  margin: 10px 0;
+  padding: 10px 12px;
+  background: #ecfeff;
+  border: 1px solid #a5f3fc;
+  color: #075985;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+
+@media (max-width: 767px) {
+  .principal-content {
+    padding: 12px;
+  }
+  .principal-content h2 {
+    font-size: 18px;
+  }
+  .principal-list {
+    padding: 12px;
+  }
+}
+
+*/
+/* Estructura de página: header arriba, footer abajo, contenido ocupa el resto */
+/*
+.principal-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+}
+
+
+.principal-content {
+  flex: 1;
+  display: flex;              
+  flex-direction: column;     
+  min-height: 0;             
+  padding: 16px;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.principal-content h2 {
+  font-size: 20px;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+
+.principal-list {
+  margin-top: 12px;
+  padding: 16px;
+
+  
+  border: 1px solid #e5e7eb; 
+  border-radius: 10px;
+  background: #fff;
+
+  
+  flex: 1;         
+  min-height: 0;   
+  overflow: auto;  
+}
+
+.principal-msg {
+  margin: 10px 0;
+  padding: 10px 12px;
+  background: #ecfeff;
+  border: 1px solid #a5f3fc;
+  color: #075985;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+
+@media (max-width: 767px) {
+  .principal-content {
+    padding: 12px;
+  }
+  .principal-content h2 {
+    font-size: 18px;
+  }
+  .principal-list {
+    padding: 12px;
+  }
+}
+*/
+/* Estructura de página: header arriba, footer abajo, contenido ocupa el resto */
+.principal-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+}
+
+/* Main: contenedor flex vertical y encapsula el overflow */
+.principal-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;          /* permite overflow interno */
+  padding: 16px;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  overflow: hidden;       /* el scroll queda adentro, no en la página */
+}
+
+.principal-content h2 {
+  font-size: 20px;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+/* Contenedor de alumnos: ocupa el alto disponible, sin scrollear él */
+.principal-list {
+  margin-top: 12px;
+  padding: 16px;
+  display: flex;
+box-shadow: 0 8px 26px rgba(0,0,0,0.08);
+  border: 1px solid #abadb2;
+  border-radius: 10px;
+  background: #fff;
+
+  flex: 1;                /* usa el resto del alto del main */
+  min-height: 0;          /* permite overflow en el hijo */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;       /* el scroll vive en .principal-scroll */
+}
+
+/* Área scrolleable interna con la lista de ItemAlumno */
+.principal-scroll {
+  flex: 1;                /* ocupa el alto disponible dentro de .principal-list */
+  min-height: 0;
+  overflow: auto;         /* 👈 scroll interno */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Mensajes informativos */
+.principal-msg {
+  margin: 10px 0;
+  padding: 10px 12px;
+  background: #ecfeff;
+  border: 1px solid #a5f3fc;
+  color: #075985;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .principal-content {
+    padding: 12px;
+  }
+  .principal-content h2 {
+    font-size: 18px;
+  }
+  .principal-list {
+    padding: 12px;
+  }
+}
+
+/* --- Sugerencia para el item (no rompe estilos existentes) --- */
+/* Asegura que cada tarjeta no se estire en alto si hay pocos ítems */
+.itemalum {
+  width: 100%;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+}
+
