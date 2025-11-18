@@ -1,126 +1,3 @@
-/* Estructura de página: header arriba, footer abajo, contenido ocupa el resto */
-/*
-.principal-page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: #f9fafb;
-}
-
-
-.principal-content {
-  flex: 1;                  
-  padding: 16px;
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-}
-
-.principal-content h2 {
-  font-size: 20px;
-  color: #111827;
-  margin-bottom: 10px;
-}
-
-
-.principal-list {
-  margin-top: 12px;
-  padding: 16px;
-  border: 2px dashed #2563eb; 
-  border-radius: 10px;
-  background: #fff;
-}
-.principal-msg {
-  margin: 10px 0;
-  padding: 10px 12px;
-  background: #ecfeff;
-  border: 1px solid #a5f3fc;
-  color: #075985;
-  border-radius: 8px;
-  font-size: 14px;
-}
-
-
-@media (max-width: 767px) {
-  .principal-content {
-    padding: 12px;
-  }
-  .principal-content h2 {
-    font-size: 18px;
-  }
-  .principal-list {
-    padding: 12px;
-  }
-}
-
-*/
-/* Estructura de página: header arriba, footer abajo, contenido ocupa el resto */
-/*
-.principal-page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: #f9fafb;
-}
-
-
-.principal-content {
-  flex: 1;
-  display: flex;              
-  flex-direction: column;     
-  min-height: 0;             
-  padding: 16px;
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-}
-
-.principal-content h2 {
-  font-size: 20px;
-  color: #111827;
-  margin-bottom: 10px;
-}
-
-
-.principal-list {
-  margin-top: 12px;
-  padding: 16px;
-
-  
-  border: 1px solid #e5e7eb; 
-  border-radius: 10px;
-  background: #fff;
-
-  
-  flex: 1;         
-  min-height: 0;   
-  overflow: auto;  
-}
-
-.principal-msg {
-  margin: 10px 0;
-  padding: 10px 12px;
-  background: #ecfeff;
-  border: 1px solid #a5f3fc;
-  color: #075985;
-  border-radius: 8px;
-  font-size: 14px;
-}
-
-
-@media (max-width: 767px) {
-  .principal-content {
-    padding: 12px;
-  }
-  .principal-content h2 {
-    font-size: 18px;
-  }
-  .principal-list {
-    padding: 12px;
-  }
-}
-*/
-/* Estructura de página: header arriba, footer abajo, contenido ocupa el resto */
 .principal-page {
   min-height: 100vh;
   display: flex;
@@ -133,45 +10,76 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0;          /* permite overflow interno */
+  min-height: 0;
   padding: 16px;
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  overflow: hidden;       /* el scroll queda adentro, no en la página */
+  overflow: hidden; /* el scroll queda adentro, no en la página */
 }
 
-.principal-content h2 {
-  font-size: 20px;
-  color: #111827;
-  margin-bottom: 10px;
-}
-
-/* Contenedor de alumnos: ocupa el alto disponible, sin scrollear él */
-.principal-list {
-  margin-top: 12px;
-  padding: 16px;
+/* === HEADER (Clases + Input) === */
+.principal-header {
   display: flex;
-box-shadow: 0 8px 26px rgba(0,0,0,0.08);
-  border: 1px solid #abadb2;
-  border-radius: 10px;
-  background: #fff;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
 
-  flex: 1;                /* usa el resto del alto del main */
-  min-height: 0;          /* permite overflow en el hijo */
+.header-left {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+}
+
+.header-right {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Tarjeta de clases disponibles con borde degradado suave */
+.clases-card {
+  width: 100%;
+  padding: 10px 12px;
+
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, rgba(16,185,129,0.35), rgba(5,150,105,0.35)) border-box;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+
   display: flex;
   flex-direction: column;
-  overflow: hidden;       /* el scroll vive en .principal-scroll */
+  min-height: 72px;
 }
 
-/* Área scrolleable interna con la lista de ItemAlumno */
-.principal-scroll {
-  flex: 1;                /* ocupa el alto disponible dentro de .principal-list */
-  min-height: 0;
-  overflow: auto;         /* 👈 scroll interno */
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+/* Título "Clases disponibles" */
+.clases-title {
+  margin: 0;
+  font-size: 16px;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* Contenedor scrolleable para muchas clases */
+.class-filter-scroll {
+  margin-top: 6px;
+  max-height: 90px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Mensaje si no hay clases */
+.no-classes-text {
+  font-size: 13px;
+  color: #6b7280;
 }
 
 /* Mensajes informativos */
@@ -185,24 +93,205 @@ box-shadow: 0 8px 26px rgba(0,0,0,0.08);
   font-size: 14px;
 }
 
-/* Responsive */
-@media (max-width: 767px) {
-  .principal-content {
-    padding: 12px;
-  }
-  .principal-content h2 {
-    font-size: 18px;
-  }
-  .principal-list {
-    padding: 12px;
-  }
+/* === CONTENEDOR PRINCIPAL (lista + botón) === */
+.principal-list-wrapper {
+  margin-top: 8px;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-/* --- Sugerencia para el item (no rompe estilos existentes) --- */
-/* Asegura que cada tarjeta no se estire en alto si hay pocos ítems */
+/* Contenedor de alumnos con borde degradado suave */
+.principal-list {
+  padding: 12px 12px 14px 12px;
+
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, rgba(16,185,129,0.35), rgba(5,150,105,0.35)) border-box;
+
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Encabezado interno con nombre de clase activa */
+.principal-list-header {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.18),
+    rgba(5, 150, 105, 0.12)
+  );
+  color: #064e3b;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.principal-list-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Cuerpo del contenedor (lista / mensajes) */
+.principal-list-body {
+  margin-top: 8px;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Área scrolleable interna con la lista de ItemAlumno */
+.principal-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 6px; /* evita que el scroll tape contenido */
+}
+
+/* Estados vacíos o mensajes centrados */
+.principal-list-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.principal-list-empty p {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Botón Finalizar Clase abajo a la derecha */
+.principal-actions {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* --- Item alumno --- */
 .itemalum {
   width: 100%;
   box-sizing: border-box;
   flex: 0 0 auto;
 }
 
+/* === Chips de clase === */
+.class-filter {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+
+.class-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  font-size: 13px;
+  color: #111;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.05s;
+  user-select: none;
+}
+
+.class-chip .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--chip-color, #e5e7eb);
+}
+
+.class-chip:hover {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: var(--chip-color, #d1d5db);
+}
+
+.class-chip:active {
+  transform: scale(0.98);
+}
+
+.class-chip.active {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: var(--chip-color, #cbd5e1);
+}
+
+/* Badge con pendientes */
+.class-chip .badge {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: #ef4444;
+}
+
+/* Titileo suave cuando hay pendientes y la chip NO está activa */
+@keyframes chipPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.class-chip.has-pending {
+  animation: chipPulse 1.6s ease-out infinite;
+  border-color: #ef4444;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .principal-content {
+    padding: 12px;
+  }
+
+  .principal-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 8px;
+  }
+
+  .clases-card {
+    min-height: 64px;
+  }
+
+  .principal-list {
+    padding: 10px 10px 12px 10px;
+  }
+}

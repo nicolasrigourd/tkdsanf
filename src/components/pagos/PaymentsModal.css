@@ -1,0 +1,257 @@
+/* Backdrop base */
+.pmodal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+
+/* Card */
+.pmodal-card {
+  width: min(860px, 94vw);
+  max-height: 90vh;
+  background: #ffffff;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.22);
+}
+
+/* Header */
+.pmodal-header {
+  padding: 14px 16px 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #eef2f7;
+}
+.title-wrap h3 {
+  margin: 0 0 4px 0;
+}
+.student-meta {
+  font-size: 13px;
+  color: #475569;
+  display: flex;
+  gap: 12px;
+}
+.meta-name { font-weight: 600; }
+.meta-dni b { font-weight: 700; }
+
+.year-select label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #475569;
+}
+.year-select select {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 14px;
+  background: #fff;
+}
+
+/* Alerts */
+.pmodal-alert {
+  margin: 8px 16px 0 16px;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+.pmodal-alert.ok {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+.pmodal-alert.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.pmodal-loading {
+  padding: 20px 16px;
+  color: #475569;
+}
+
+/* Lista vertical de meses */
+.pmonths-list {
+  padding: 8px 12px 4px 12px;
+  overflow: auto;
+}
+
+/* Fila/Row del mes */
+.row-card {
+  border: 1px solid transparent;
+  border-radius: 12px;
+  margin: 8px 4px;
+  overflow: hidden;
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+.row-card.paid {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #065f46;
+}
+.row-card.unpaid {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+.row-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Cabecera clickeable */
+.row-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.row-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background: currentColor;
+  opacity: .9;
+  border-radius: 999px;
+}
+.row-title {
+  font-weight: 700;
+  font-size: 15px;
+}
+.row-status {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: #fff;
+}
+.row-status.ok      { background: #16a34a; }
+.row-status.pending { background: #b91c1c; }
+
+/* Panel expandible */
+.row-panel {
+  overflow: hidden;
+  transition: max-height .24s ease;
+}
+.panel-inner {
+  padding: 10px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.panel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.panel-grid label {
+  font-size: 12.5px;
+  color: #334155;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+.panel-grid input,
+.panel-grid select {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 14px;
+  background: #fff;
+}
+.panel-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* Footer */
+.pmodal-footer {
+  border-top: 1px solid #eef2f7;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Botones */
+.btn {
+  background: #e5e7eb;
+  border: 1px solid #d1d5db;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn:hover { filter: brightness(0.97); }
+.btn.primary {
+  background: #2563eb;
+  border-color: #1d4ed8;
+  color: #fff;
+}
+.btn.tiny {
+  padding: 4px 8px;
+  font-size: 12.5px;
+  border-radius: 7px;
+}
+.btn.danger {
+  background: #ef4444;
+  border-color: #dc2626;
+  color: #fff;
+}
+
+/* Confirmación descartar */
+.discard-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, .35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 70;
+}
+.discard-card {
+  width: min(420px, 90vw);
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 14px 12px;
+  box-shadow: 0 16px 44px rgba(0,0,0,.25);
+}
+.discard-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.discard-text {
+  color: #475569;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.discard-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Responsive */
+@media (max-width: 620px) {
+  .panel-grid { grid-template-columns: 1fr; }
+  .student-meta { flex-direction: column; gap: 2px; }
+}

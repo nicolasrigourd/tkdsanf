@@ -1,162 +1,321 @@
-.amodal-backdrop{
-  position: fixed; inset:0; background:rgba(0,0,0,.35);
-  display:flex; align-items:center; justify-content:center; z-index:9999;
-}
-.amodal-card{
-  width: 95%; max-width: 720px; background:#fff; border-radius:14px; border:1px solid #e5e7eb;
-  padding:16px 16px 12px; box-shadow:0 10px 30px rgba(0,0,0,.15);
-}
-.amodal-card h3{ margin-bottom:10px; font-size:18px; color:#111827; }
-
-.amodal-form{ display:grid; gap:10px; }
-.row{ display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
-.row-mini{ grid-template-columns: 1.2fr .8fr .5fr; }
-label{ display:grid; gap:6px; font-size:13px; color:#374151; }
-input, select{
-  padding:9px 10px; border:1px solid #d1d5db; border-radius:10px; font-size:14px; outline:none;
-}
-input:focus, select:focus{ border-color:#2563eb; box-shadow:0 0 0 2px rgba(37,99,235,.15); }
-.chk{ grid-template-columns: auto 1fr; align-items:center; gap:8px; }
-
-.amodal-error{ background:#fee2e2; color:#991b1b; border:1px solid #fecaca; padding:8px 10px; border-radius:8px; }
-
-.actions{ display:flex; justify-content:flex-end; gap:8px; margin-top:6px; }
-.btn{ padding:10px 12px; border:none; border-radius:10px; cursor:pointer; font-weight:600; }
-.btn.primary{ background:#111; color:#fff; }
-.btn.primary:hover{ background:#2563eb; }
-.btn.secondary{ background:#f3f4f6; color:#111; }
-.btn.secondary:hover{ background:#e5e7eb; }
-
-@media (max-width:680px){
-  .row, .row-mini{ grid-template-columns: 1fr; }
-}
-.calc-box{
-  margin-top:4px;
-  padding:10px 12px;
-  border:1px solid #e5e7eb;
-  border-radius:10px;
-  background:#f9fafb;
-  display:grid;
-  gap:4px;
-  font-size:14px;
-  color:#111827;
-}
-.badge.trial{
-  display:inline-block;
-  margin-top:4px;
-  padding:4px 8px;
-  border-radius:999px;
-  background:#dbeafe;
-  color:#1e3a8a;
-  font-weight:700;
-  font-size:12px;
-}
-.ghost{ visibility:hidden; }
-/* Tabs */
-.alumnos-tabs{
-  display:flex;
-  gap:8px;
-  margin-bottom:10px;
-}
-.tab-btn{
-  padding:8px 12px;
-  border:1px solid #d1d5db;
-  border-radius:999px;
-  background:#fff;
-  font-weight:600;
-  cursor:pointer;
-}
-.tab-btn:hover{ background:#f3f4f6; }
-.tab-btn.active{
-  background:#111; color:#fff; border-color:#111;
-}
-/* Aviso fuera de ventana */
-.alert-outwindow{
-  margin-top:10px;
-  border:1px dashed #f59e0b;
-  background:#fff7ed;
-  color:#7c2d12;
-  border-radius:12px;
-  padding:10px 12px;
-}
-.alert-title{
-  font-weight:800;
-  margin-bottom:6px;
-}
-.alert-actions{
-  display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;
-}
-.btn.tiny{
-  padding:6px 10px; border-radius:999px; border:1px solid #111; background:#111; color:#fff; font-weight:700; cursor:pointer;
-}
-.btn.tiny:hover{ background:#2563eb; border-color:#2563eb; }
-.btn.tiny.alt{
-  background:#fff; color:#111; border-color:#111;
-}
-.btn.tiny.alt:hover{
-  background:#f3f4f6;
+/* Backdrop general para todos los modales */
+.amodal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5); /* fondo oscuro translúcido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
 }
 
-.plan-title{
-  margin-top:10px; margin-bottom:6px;
-  font-size:14px; font-weight:800; color:#111827;
-}
-/* --- Tamaño y layout del modal --- */
-.amodal-card{
-  width: min(720px, 94vw);
-  max-height: 92vh;            /* <= tope de alto */
-  overflow: hidden;            /* el scroll va en el form */
+/* Tarjeta principal del modal */
+.amodal-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+  width: 100%;
+  max-width: 760px;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/* El formulario scrollea, no la página */
-.amodal-form{
+/* Header del modal */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(90deg, #0f766e, #0ea5e9);
+  color: #ffffff;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.modal-close-btn {
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 999px;
+}
+
+.modal-close-btn:hover {
+  background: rgba(15, 23, 42, 0.2);
+}
+
+/* Cuerpo del modal */
+.modal-body {
+  padding: 16px 20px 8px;
+  overflow-y: auto;
+}
+
+.amodal-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  overflow: auto;              /* <= scroll interno */
-  padding: 12px 12px 0;
+  gap: 16px;
 }
 
-/* Footer fijo dentro del modal */
-.actions{
-  position: sticky;            /* se queda pegado al fondo del modal */
-  bottom: 0;
-  background: #fff;
-  border-top: 1px solid #e5e7eb;
+/* Secciones internas */
+.modal-section {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 12px 14px;
+  background: #f9fafb;
+}
+
+.section-title {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Filas de inputs */
+.row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.row-mini {
+  align-items: center;
+}
+
+.row label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: #374151;
+}
+
+.row input,
+.row select {
+  margin-top: 4px;
+  padding: 8px 9px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 0.82rem;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+  background-color: #ffffff;
+}
+
+.row input:focus,
+.row select:focus {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.25);
+}
+
+.row input[disabled] {
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.ghost {
+  flex: 1;
+}
+
+/* Checkbox inline */
+.chk {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+}
+
+.chk input[type="checkbox"] {
+  margin: 0;
+}
+
+/* Errores de campo */
+.has-error input,
+.has-error select {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.15);
+}
+
+.field-error {
+  margin-top: 3px;
+  font-size: 0.72rem;
+  color: #b91c1c;
+}
+
+/* Error general */
+.amodal-error {
+  margin-top: 6px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  font-size: 0.8rem;
+}
+
+/* Alerta fuera de ventana (estilo sobrio, sin naranja feo) */
+.alert-outwindow {
+  margin-top: 4px;
+  border-radius: 10px;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
   padding: 10px 12px;
+}
+
+.alert-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1d4ed8;
+  margin-bottom: 4px;
+}
+
+.alert-body {
+  font-size: 0.8rem;
+  color: #1f2937;
+}
+
+.alert-body p {
+  margin: 2px 0;
+}
+
+.alert-actions {
+  margin-top: 8px;
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Caja de cálculo de plan */
+.calc-box {
+  border-radius: 10px;
+  border: 1px dashed #d1d5db;
+  padding: 10px 12px;
+  font-size: 0.8rem;
+  background: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.badge.trial {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+/* Hint texto suave */
+.hint {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* Footer del modal */
+.modal-footer {
+  padding: 10px 20px 16px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
   justify-content: flex-end;
-  margin-top: auto;            /* empuja el footer al final */
+  gap: 10px;
+  background: #f9fafb;
 }
 
-/* Ajustes de tipografía para bloques “grandes” */
-.alert-outwindow,
-.calc-box{
-  font-size: 0.95rem;
+.actions {
+  margin-top: 4px;
 }
 
-/* Responsive: en pantallas chicas, reducir aún más */
-@media (max-width: 600px){
-  .amodal-card{
-    width: 96vw;
-    max-height: 88dvh;         /* usa viewport dinámico en mobile */
+/* Botones */
+.btn {
+  border-radius: 999px;
+  border: none;
+  padding: 7px 14px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: background-color 0.15s, box-shadow 0.15s, transform 0.04s;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, #0f766e, #0ea5e9);
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(15, 118, 110, 0.35);
+}
+
+.btn.primary:hover {
+  filter: brightness(1.03);
+  box-shadow: 0 12px 26px rgba(15, 118, 110, 0.45);
+}
+
+.btn.secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.btn.secondary:hover {
+  background: #d1d5db;
+}
+
+.btn.tiny {
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  box-shadow: none;
+}
+
+.btn.alt {
+  background: #e0f2fe;
+  color: #075985;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Loading text */
+.loading-text {
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .amodal-card {
+    margin: 0 10px;
+    max-height: 92vh;
   }
-  .amodal-form{
-    padding: 10px 10px 0;
+
+  .row {
+    flex-direction: column;
   }
-  .alert-outwindow,
-  .calc-box{
-    font-size: 0.9rem;
+
+  .ghost {
+    display: none;
   }
-  .row{
-    grid-template-columns: 1fr !important; /* si usás grid para pares de inputs */
-    gap: 8px;
-  }
-  .btn.tiny{
-    padding: 5px 8px;
-    font-size: 12px;
+
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding-left: 14px;
+    padding-right: 14px;
   }
 }

@@ -1,11 +1,18 @@
-/* Contenedor compacto */
+/* Contenedor compacto con degradado suave, alineado al estilo principal */
 .ingr-compact {
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  border: 1.5px solid transparent;
   border-radius: 12px;
-  padding: 10px 12px;                 /* menos padding */
-  margin-bottom: 12px;                /* menos alto total */
- box-shadow: 0 8px 26px rgba(0,0,0,0.08);
+
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, rgba(16,185,129,0.35), rgba(5,150,105,0.35)) border-box;
+
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+
+  display: flex;
+  flex-direction: column;
 }
 
 /* Fila superior: fecha izquierda / hora derecha */
@@ -18,18 +25,18 @@
 }
 
 .ingr-fecha {
-  font-size: 13px;                    /* más chico */
+  font-size: 13px;
   font-weight: 600;
-  color: #111827;
+  color: #0f172a;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .ingr-hora {
-  font-size: 16px;                    /* más compacto que antes */
+  font-size: 16px;
   font-weight: 700;
-  color: #14161a;                     /* azul sutil para foco */
+  color: #0f766e;
   white-space: nowrap;
 }
 
@@ -40,56 +47,78 @@
   gap: 8px;
 }
 
-/* Input más bajo y no tan largo visualmente */
+/* Input */
 .ingr-input-compact {
   flex: 1;
-  min-width: 220px;                   /* evita que se haga demasiado corto */
-  max-width: 380px;                   /* controla ancho para que no se estire */
-  height: 36px;                       /* menos altura */
+  min-width: 220px;
+  max-width: 380px;
+  height: 36px;
   padding: 0 10px;
   border: 1px solid #d1d5db;
   border-radius: 10px;
   font-size: 14px;
   outline: none;
-  transition: border-color .15s, box-shadow .15s;
-}
-.ingr-input-compact:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, .15);
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+  background-color: #f9fafb;
 }
 
-/* Botón compacto */
+.ingr-input-compact::placeholder {
+  color: #9ca3af;
+}
+
+/* Focus bien visible (también cuando el focus vuelve tras inactividad) */
+.ingr-input-compact:focus {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+  background-color: #ffffff;
+}
+
+/* Botón con degradado */
 .ingr-btn-compact {
-  height: 36px;                       /* igual que el input */
-  padding: 0 12px;
+  height: 36px;
+  padding: 0 14px;
   border: none;
   border-radius: 10px;
-  background: #111;                   /* negro base */
-  color: #fff;
+
+  background: linear-gradient(135deg, #0f766e, #0d9488);
+  color: #ffffff;
+
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background .15s, transform .05s;
+  transition: transform 0.05s, box-shadow 0.15s, filter 0.15s;
+  white-space: nowrap;
 }
-.ingr-btn-compact:hover { background: #2563eb; }
-.ingr-btn-compact:active { transform: translateY(1px); }
+
+.ingr-btn-compact:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.35);
+}
+
+.ingr-btn-compact:active {
+  transform: translateY(1px) scale(0.99);
+  box-shadow: 0 3px 10px rgba(15, 118, 110, 0.3);
+}
 
 /* Responsive: en móviles, apilamos el form para no romper líneas */
 @media (max-width: 600px) {
   .ingr-head {
-    flex-direction: column;           /* fecha y hora una debajo de otra */
+    flex-direction: column;
     align-items: flex-start;
     gap: 2px;
   }
+
   .ingr-form-compact {
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
   }
+
   .ingr-input-compact {
     width: 100%;
     max-width: 100%;
   }
+
   .ingr-btn-compact {
     width: 100%;
   }

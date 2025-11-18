@@ -1,11 +1,12 @@
-/* === Navbar (degradado gris -> rojizo) === */
+/* === Navbar con degradado (línea visual AlumnoModal) === */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: #d1dbf0;
-  color: #111;
-  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(90deg, #0f766e, #0ea5e9);
+  color: #f9fafb;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.15);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
 }
 
 /* Fila principal: FLEX (logo izq, links centro, perfil der) */
@@ -25,42 +26,56 @@
   gap: 8px;
   min-width: 0;
 }
+
 .navbar-logo {
   width: 34px;
   height: 34px;
   user-select: none;
+  border-radius: 999px;
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.35);
 }
+
 .navbar-brand {
   font-weight: 700;
   font-size: 15px;
-  letter-spacing: .2px;
+  letter-spacing: 0.02em;
   white-space: nowrap;
-  color: #111;
+  color: #f9fafb;
+  text-shadow: 0 1px 2px rgba(15, 23, 42, 0.45);
 }
 
 /* Centro (links) - visible en desktop */
 .navbar-center {
-  display: none;             /* oculto en mobile; visible en desktop */
-  gap: 22px;
+  display: none; /* oculto en mobile; visible en desktop */
+  gap: 18px;
   align-items: center;
   justify-content: center;
   flex: 1;
 }
+
 .navbar-link {
-  color: #111;               /* negro por defecto */
+  color: #e5e7eb;
   text-decoration: none;
   font-size: 14px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  transition: color .15s, background .15s;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color 0.15s, background 0.15s, box-shadow 0.15s, transform 0.05s;
 }
+
 .navbar-link:hover {
-  color: #2563eb;            /* azul hover */
-  background: rgba(37, 99, 235, .08);
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.22);
+  box-shadow: 0 3px 8px rgba(15, 23, 42, 0.45);
+  transform: translateY(-1px);
 }
+
+/* Link activo (más sobrio, sin rojo) */
 .navbar-link.active {
-  color: #e11d48;            /* rojo activo */
-  background: rgba(225, 29, 72, .12);
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.35);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.55);
 }
 
 /* Derecha: burger + campana + perfil */
@@ -79,18 +94,27 @@
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  background: transparent;
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.15);
   cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.1s, box-shadow 0.15s;
 }
+
 .navbar-burger span {
   display: block;
   width: 20px;
   height: 2px;
-  background: #111;
-  transition: transform .2s, opacity .2s;
+  background: #f9fafb;
+  border-radius: 999px;
+  transition: transform 0.2s, opacity 0.2s;
 }
+
+.navbar-burger:hover {
+  background: rgba(15, 23, 42, 0.3);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.5);
+}
+
 .navbar-burger.is-open span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
@@ -108,28 +132,32 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  background: transparent;
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.15);
   cursor: pointer;
-  transition: background .2s, border-color .2s, transform .1s;
+  transition: background 0.2s, border-color 0.2s, transform 0.1s, box-shadow 0.15s;
 }
+
 .navbar-bell:hover {
-  background: rgba(37, 99, 235, .08);
-  border-color: #2563eb;
+  background: rgba(15, 23, 42, 0.3);
+  border-color: #e0f2fe;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.5);
 }
+
 .bell-icon {
   width: 20px;
   height: 20px;
-  fill: #111;
+  fill: #f9fafb;
 }
+
 .bell-dot {
   position: absolute;
   margin-left: 22px;
   margin-bottom: 22px;
   width: 8px;
   height: 8px;
-  background: #ef4444;
+  background: #f97316;
   border-radius: 999px;
   border: 2px solid #fff;
 }
@@ -139,22 +167,36 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: transparent;
-  color: #111;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  padding: 8px 10px;
+  background: rgba(15, 23, 42, 0.15);
+  color: #f9fafb;
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  border-radius: 999px;
+  padding: 6px 11px;
   cursor: pointer;
-  transition: background .2s, border-color .2s, color .2s, transform .1s;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.1s,
+    box-shadow 0.15s;
 }
+
 .navbar-profile:hover,
 .navbar-profile.open {
-  background: rgba(37, 99, 235, .08);
-  color: #2563eb;
-  border-color: #2563eb;
+  background: rgba(15, 23, 42, 0.3);
+  color: #ffffff;
+  border-color: #e0f2fe;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.55);
 }
+
 .avatar {
-  width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Texto usuario */
+.logout-text {
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
 /* Dropdown de perfil */
@@ -163,15 +205,16 @@
   top: 56px;
   right: 0;
   width: 240px;
-  background: #fff;
+  background: #ffffff;
   border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+  border-radius: 14px;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.4);
   padding: 8px;
   display: grid;
   gap: 6px;
   z-index: 60;
 }
+
 .profile-head {
   display: flex;
   gap: 10px;
@@ -179,21 +222,31 @@
   border-bottom: 1px solid #f1f5f9;
   margin-bottom: 4px;
 }
+
 .profile-avatar {
-  width: 36px; height: 36px;
-  display: grid; place-items: center;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
   border-radius: 999px;
-  background: #f3f4f6;
+  background: #e5f3ff;
+  color: #0f172a;
 }
+
 .profile-user {
   display: grid;
   align-content: center;
 }
+
 .profile-name {
-  font-weight: 800; color: #111827; line-height: 1.1;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.1;
 }
+
 .profile-role {
-  font-size: 12px; color: #6b7280;
+  font-size: 12px;
+  color: #6b7280;
 }
 
 .profile-item {
@@ -201,20 +254,26 @@
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
-  padding: 10px;
+  padding: 9px 10px;
   cursor: pointer;
-  transition: background .15s, color .15s, border-color .15s, transform .1s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s,
+    transform 0.1s, box-shadow 0.15s;
   font-weight: 600;
   color: #111827;
+  font-size: 0.85rem;
 }
+
 .profile-item:hover {
   background: #f8fafc;
-  transform: scale(1.01);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.25);
 }
+
 .profile-item.danger {
   border-color: #fecaca;
   color: #b91c1c;
 }
+
 .profile-item.danger:hover {
   background: #fef2f2;
 }
@@ -223,33 +282,256 @@
 .navbar-mobile {
   display: none;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   padding: 10px 12px 14px;
-  background: #f7f7f7;
-  border-top: 1px solid #e5e7eb;
+  background: #0f172a;
+  border-top: 1px solid rgba(15, 23, 42, 0.7);
 }
-.navbar-mobile.open { display: flex; }
+
+.navbar-mobile.open {
+  display: flex;
+}
+
 .navbar-mobile a {
-  color: #111;
+  color: #e5e7eb;
   text-decoration: none;
-  padding: 10px 12px;
-  border-radius: 8px;
-  transition: color .15s, background .15s;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  transition: color 0.15s, background 0.15s, transform 0.05s;
 }
+
 .navbar-mobile a:hover {
-  color: #2563eb;
-  background: rgba(37, 99, 235, .08);
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.6);
+  transform: translateY(-1px);
 }
+
+/* Link activo en mobile (sin rojo) */
 .navbar-mobile a.active {
-  color: #e11d48;
-  background: rgba(225, 29, 72, .12);
+  color: #ffffff;
+  background: rgba(15, 118, 110, 0.5);
 }
 
 /* ===== Desktop (>=768px) ===== */
 @media (min-width: 768px) {
-  .navbar-row { padding: 0 24px; }
-  .navbar-center { display: flex; }     /* mostrar links en fila */
-  .navbar-burger { display: none; }     /* ocultar burger */
-  .logout-text { display: inline; }     /* mostrar nombre/usuario */
-  .navbar-mobile { display: none !important; } /* asegurar cerrado */
+  .navbar-row {
+    padding: 0 24px;
+  }
+  .navbar-center {
+    display: flex; /* mostrar links en fila */
+  }
+  .navbar-burger {
+    display: none; /* ocultar burger */
+  }
+  .logout-text {
+    display: inline; /* mostrar nombre/usuario */
+  }
+  .navbar-mobile {
+    display: none !important; /* asegurar cerrado */
+  }
+}
+
+
+/* === Formulario inline de cambio de contraseña en el dropdown === */
+.profile-change-box {
+  margin-top: 6px;
+  padding: 8px;
+  border-radius: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  display: grid;
+  gap: 6px;
+}
+
+.profile-change-box label {
+  display: grid;
+  gap: 4px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.profile-change-box input {
+  padding: 7px 9px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  background: #ffffff;
+}
+
+.profile-change-box input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  outline: none;
+}
+
+.profile-change-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.profile-change-save,
+.profile-change-cancel {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.05s ease;
+}
+
+.profile-change-save {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.profile-change-save:hover {
+  background: #0b1220;
+}
+
+.profile-change-cancel:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+
+/* === Toast (mini modal de confirmación) === */
+.navbar-toast {
+  position: fixed;
+  top: 78px;
+  right: 20px;
+  z-index: 9999;
+  background: #ffffff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+
+  /* borde estilo TKD */
+  border: 1px solid;
+  border-image: linear-gradient(90deg, #0f766e, #0ea5e9) 1;
+
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.35);
+  animation: toast-slide-in 0.25s ease-out;
+}
+
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) translateX(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* === Modal cambio de contraseña === */
+.pwd-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.pwd-modal-card {
+  width: min(380px, 92vw);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 14px 16px 12px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.45);
+  border: 1px solid #e5e7eb;
+}
+
+.pwd-modal-title {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.pwd-modal-body {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.pwd-field {
+  display: grid;
+  gap: 4px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.pwd-field input {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+.pwd-field input:focus {
+  outline: none;
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.3);
+}
+
+.pwd-error {
+  margin-top: 2px;
+  font-size: 12px;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+
+.pwd-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Botones del modal de contraseña (alineados con tu estilo general) */
+.pwd-btn {
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s, color 0.15s,
+    transform 0.05s, box-shadow 0.15s;
+}
+
+.pwd-btn.ghost {
+  background: #f3f4f6;
+  color: #111827;
+  border-color: #e5e7eb;
+}
+
+.pwd-btn.ghost:hover {
+  background: #e5e7eb;
+}
+
+.pwd-btn.primary {
+  background: #111827;
+  color: #ffffff;
+  border-color: #111827;
+}
+
+.pwd-btn.primary:hover {
+  background: #0b1120;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.35);
 }

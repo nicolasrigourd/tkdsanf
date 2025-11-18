@@ -1,15 +1,309 @@
-.config-page{ min-height:100vh; display:flex; flex-direction:column; background:#f9fafb; }
-.config-content{ flex:1; padding:16px; width:100%; max-width:880px; margin:0 auto; }
-.config-content h2{ font-size:20px; color:#111827; margin-bottom:12px; }
+/* === Layout base === */
+.config-page{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:#f9fafb;
+}
 
-.config-form{ display:grid; gap:12px; }
-fieldset{ border:1px solid #e5e7eb; border-radius:12px; padding:12px; background:#fff; }
-legend{ padding:0 6px; color:#374151; font-weight:700; }
-label{ display:grid; gap:6px; font-size:13px; color:#374151; }
-input, select{ padding:9px 10px; border:1px solid #d1d5db; border-radius:10px; font-size:14px; }
-input:focus, select:focus{ border-color:#2563eb; box-shadow:0 0 0 2px rgba(37,99,235,.15); outline:none; }
+.config-content{
+  flex:1;
+  padding:16px;
+  width:100%;
+  max-width:880px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+}
 
-.config-actions{ display:flex; justify-content:flex-end; margin-top:4px; }
-.btn.primary{ background:#111; color:#fff; border:none; border-radius:10px; padding:10px 12px; cursor:pointer; font-weight:600; }
-.btn.primary:hover{ background:#2563eb; }
-.config-msg{ margin-top:8px; padding:10px 12px; background:#ecfeff; border:1px solid #a5f3fc; color:#075985; border-radius:8px; }
+.config-content h2{
+  font-size:20px;
+  color:#111827;
+  margin-bottom:12px;
+}
+
+/* Form principal */
+.config-form{
+  display:grid;
+  gap:14px;
+}
+
+/* === Cards (fieldset) con estilo moderno === */
+.config-content fieldset{
+  border-radius:14px;
+  padding:14px;
+  background:#ffffff;
+  border:1.5px solid transparent;
+  background-image:
+    linear-gradient(#ffffff,#ffffff),
+    linear-gradient(135deg, rgba(16,185,129,0.28), rgba(37,99,235,0.22));
+  background-origin:border-box;
+  background-clip:padding-box, border-box;
+  box-shadow:0 10px 26px rgba(15,23,42,0.08);
+}
+
+.config-content legend{
+  display:none;
+}
+
+.cfg-card-head{
+  display:grid;
+  gap:4px;
+  margin-bottom:10px;
+  padding-bottom:8px;
+  border-bottom:1px dashed #e5e7eb;
+}
+
+.cfg-card-head h3{
+  margin:0;
+  color:#111827;
+  font-size:16px;
+}
+
+.cfg-card-head p{
+  margin:0;
+  color:#6b7280;
+  font-size:13px;
+}
+
+/* Grid para inputs en cada card */
+.cfg-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+@media (max-width:720px){
+  .cfg-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* Inputs sólo dentro de config */
+.config-content label{
+  display:grid;
+  gap:6px;
+  font-size:13px;
+  color:#374151;
+}
+
+.config-content input,
+.config-content select{
+  padding:9px 10px;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  font-size:14px;
+  background:#ffffff;
+  transition:border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+
+.config-content input:focus,
+.config-content select:focus{
+  border-color:#0f766e;
+  box-shadow:0 0 0 2px rgba(16,185,129,0.25);
+  outline:none;
+  background:#ffffff;
+}
+
+/* Hint bajo la card de ciclo */
+.cfg-hint{
+  margin-top:8px;
+  color:#6b7280;
+  font-size:12px;
+}
+
+/* Acciones generales del form */
+.config-actions{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:4px;
+}
+
+/* Botones de guardar/cancelar, scoped a config */
+.config-actions .btn.primary,
+.cls-actions .btn.primary{
+  padding:8px 14px;
+  border-radius:999px;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  font-size:13px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+
+  background:linear-gradient(135deg, #0f766e, #0d9488);
+  color:#f9fafb;
+
+  box-shadow:0 6px 16px rgba(13,148,136,0.38);
+  transition:transform 0.08s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.config-actions .btn.primary:hover,
+.cls-actions .btn.primary:hover{
+  filter:brightness(1.05);
+  transform:translateY(-1px);
+  box-shadow:0 9px 22px rgba(13,148,136,0.45);
+}
+
+.config-actions .btn.primary:active,
+.cls-actions .btn.primary:active{
+  transform:translateY(1px) scale(0.99);
+  box-shadow:0 4px 12px rgba(13,148,136,0.45);
+}
+
+/* Botón ghost en clases */
+.cls-actions .btn.ghost{
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid #e5e7eb;
+  font-weight:600;
+  cursor:pointer;
+  font-size:13px;
+  background:#f3f4f6;
+  color:#374151;
+  transition:background .15s ease, border-color .15s ease, box-shadow .15s ease, transform .06s ease;
+}
+
+.cls-actions .btn.ghost:hover{
+  background:#e5e7eb;
+  border-color:#cbd5e1;
+  box-shadow:0 4px 12px rgba(148,163,184,0.35);
+  transform:translateY(-1px);
+}
+
+/* Mensaje general de guardado */
+.config-msg{
+  margin-top:8px;
+  padding:10px 12px;
+  background:#ecfeff;
+  border:1px solid #a5f3fc;
+  color:#075985;
+  border-radius:8px;
+  font-size:13px;
+}
+
+/* === Gestión de clases integrada === */
+
+.cls-form-inline{
+  display:grid;
+  grid-template-columns:1fr auto auto;
+  gap:10px;
+  align-items:end;
+  margin-bottom:8px;
+}
+
+@media (max-width:720px){
+  .cls-form-inline{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+.cls-field{
+  display:grid;
+  gap:6px;
+}
+
+.cls-field.narrow input[type="color"]{
+  width:48px;
+  height:40px;
+  padding:2px;
+  border-radius:10px;
+  border:1px solid #d1d5db;
+  cursor:pointer;
+}
+
+/* Mensajes de error/ok en clases */
+.cfg-msg.ok{
+  margin-top:6px;
+  color:#065f46;
+  background:#ecfdf5;
+  border:1px solid #a7f3d0;
+  border-radius:8px;
+  padding:8px 10px;
+  font-size:13px;
+}
+
+.cfg-msg.error{
+  margin-top:6px;
+  color:#b91c1c;
+  background:#fef2f2;
+  border:1px solid #fecaca;
+  border-radius:8px;
+  padding:8px 10px;
+  font-size:13px;
+}
+
+/* Lista de clases */
+.cls-list{
+  list-style:none;
+  padding:0;
+  margin:8px 0 0;
+  display:grid;
+  gap:8px;
+}
+
+.cls-empty{
+  color:#6b7280;
+  font-size:14px;
+}
+
+.cls-item{
+  display:grid;
+  grid-template-columns:16px 1fr auto;
+  align-items:center;
+  gap:10px;
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px solid #e5e7eb;
+  background:#ffffff;
+}
+
+.cls-color{
+  width:16px;
+  height:16px;
+  border-radius:4px;
+  border:1px solid #d1d5db;
+}
+
+.cls-name{
+  font-weight:700;
+  color:#111827;
+}
+
+.cls-item-actions{
+  display:flex;
+  gap:6px;
+}
+
+/* Botones mini dentro de la lista de clases */
+.cls-item-actions .mini{
+  padding:6px 9px;
+  border-radius:999px;
+  border:1px solid #e5e7eb;
+  background:#f8fafc;
+  cursor:pointer;
+  font-weight:600;
+  font-size:12px;
+  color:#111827;
+  transition:background .15s ease, border-color .15s ease, box-shadow .15s ease, transform .06s ease;
+}
+
+.cls-item-actions .mini:hover{
+  background:#eef2f7;
+  border-color:#cbd5e1;
+  box-shadow:0 3px 10px rgba(148,163,184,0.5);
+  transform:translateY(-1px);
+}
+
+/* Botón eliminar clase */
+.cls-item-actions .mini.danger{
+  color:#b91c1c;
+  border-color:#fecaca;
+  background:#fef2f2;
+}
+
+.cls-item-actions .mini.danger:hover{
+  background:#fee2e2;
+  border-color:#fca5a5;
+}

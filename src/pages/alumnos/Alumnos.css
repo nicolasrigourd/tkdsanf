@@ -1,40 +1,397 @@
-.alumnos-page{ min-height:100vh; display:flex; flex-direction:column; background:#f9fafb; }
-.alumnos-content{ flex:1; padding:16px; width:100%; max-width:1120px; margin:0 auto; }
+.alumnos-page{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:#f9fafb;
+}
 
-.alumnos-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
-.alumnos-header h2{ font-size:20px; color:#111827; }
-.actions{ display:flex; gap:8px; }
-.btn{ padding:10px 12px; border:none; border-radius:10px; font-weight:600; cursor:pointer; background:#111; color:#fff; }
-.btn:hover{ background:#2563eb; }
-.btn.secondary{ background:#f3f4f6; color:#111; }
-.btn.secondary:hover{ background:#e5e7eb; }
+.alumnos-content{
+  flex:1;
+  padding:16px;
+  width:100%;
+  max-width:1120px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+}
 
-.alumnos-toolbar{ display:flex; gap:10px; margin-bottom:12px; }
+/* HEADER */
+
+.alumnos-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+  gap:12px;
+}
+
+.alumnos-header h2{
+  font-size:20px;
+  color:#111827;
+  margin:0;
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+/* ===== BOTONES NEGRO PREMIUM ===== */
+
+.btn,
+.btn-green,
+.btn-ghost {
+  padding:8px 14px;
+  border-radius:999px;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  font-size:13px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+
+  background:#111827 !important;
+  color:#f9fafb !important;
+
+  box-shadow:0 6px 16px rgba(15,23,42,0.35);
+
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+}
+
+.btn:hover,
+.btn-green:hover,
+.btn-ghost:hover {
+  filter:brightness(1.12);
+  transform:translateY(-1px);
+  box-shadow:0 9px 22px rgba(15,23,42,0.45);
+}
+
+.btn:active,
+.btn-green:active,
+.btn-ghost:active {
+  transform:translateY(1px) scale(0.99);
+  box-shadow:0 4px 12px rgba(15,23,42,0.45);
+}
+
+/* ===== NUEVO SOCIO (BTN PRIMARIO VERDE) ===== */
+
+.btn-primary{
+  background:linear-gradient(135deg, #0f766e, #0d9488) !important;
+  color:#f9fafb !important;
+  box-shadow:0 6px 16px rgba(13,148,136,0.35);
+}
+
+.btn-primary:hover{
+  filter:brightness(1.05);
+  transform:translateY(-1px);
+  box-shadow:0 9px 22px rgba(13,148,136,0.45);
+}
+
+.btn-primary:active{
+  transform:translateY(1px) scale(0.99);
+  box-shadow:0 4px 12px rgba(13,148,136,0.45);
+}
+
+/* TABS ESTADO */
+
+.alumnos-tabs{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  padding:4px;
+  border-radius:999px;
+  background:#e5e7eb;
+  margin-bottom:12px;
+  width:fit-content;
+}
+
+.tab-btn{
+  border:none;
+  border-radius:999px;
+  padding:6px 14px;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  background:transparent;
+  color:#4b5563;
+  transition:background .15s ease, color .15s ease, box-shadow .15s ease;
+}
+
+.tab-btn:hover{
+  background:rgba(255,255,255,0.8);
+}
+
+.tab-btn.active{
+  background:linear-gradient(135deg, #0f766e, #0d9488);
+  color:#f9fafb;
+  box-shadow:0 4px 10px rgba(13,148,136,0.4);
+}
+
+/* TOOLBAR */
+
+.alumnos-toolbar{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:10px 0 14px;
+  flex-wrap:wrap;
+}
+
 .search{
-  flex:1; padding:10px 12px; border:1px solid #d1d5db; border-radius:10px; font-size:14px;
+  flex:1;
+  min-width:220px;
+  padding:9px 12px;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  font-size:14px;
+  background:#f9fafb;
+  transition:border-color .15s, box-shadow .15s, background-color .15s;
 }
-.search:focus{ border-color:#2563eb; box-shadow:0 0 0 2px rgba(37,99,235,.15); }
 
-.alumnos-table-wrap{ background:#fff; border:1px solid #e5e7eb; border-radius:12px; overflow:auto; }
-.alumnos-table{ width:100%; border-collapse:collapse; }
+.search:focus{
+  border-color:#0f766e;
+  box-shadow:0 0 0 2px rgba(16,185,129,0.25);
+  outline:none;
+  background:#ffffff;
+}
+
+/* Filtro por clase */
+.class-filter{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+/* Chip de clase */
+.class-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid #e5e7eb;
+  background:#ffffff;
+  font-size:13px;
+  cursor:pointer;
+  transition:background .15s, border-color .15s, color .15s, transform .05s;
+}
+
+.class-chip .dot{
+  width:8px; height:8px;
+  border-radius:50%;
+  background:var(--chip-color, #e5e7eb);
+}
+
+.class-chip:hover{
+  border-color:var(--chip-color, #cbd5e1);
+  background:rgba(0,0,0,0.03);
+}
+
+.class-chip:active{
+  transform:scale(0.97);
+}
+
+.class-chip.active{
+  background:rgba(0,0,0,0.05);
+  border-color:var(--chip-color, #94a3b8);
+}
+
+/* Tag dentro de tabla */
+.class-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:3px 8px;
+  border-radius:999px;
+  background:rgba(0,0,0,.02);
+  border:1px solid #e5e7eb;
+  font-size:12px;
+  line-height:1;
+}
+
+.class-tag .dot{
+  width:8px; height:8px;
+  border-radius:50%;
+  background:var(--tag-color, #e5e7eb);
+}
+
+/* TABLA */
+
+.alumnos-table-wrap{
+  flex:1;
+  min-height:0;
+  border-radius:12px;
+  border:1.5px solid transparent;
+  background:
+    linear-gradient(#ffffff,#ffffff) padding-box,
+    linear-gradient(135deg, rgba(16,185,129,0.35), rgba(5,150,105,0.35)) border-box;
+  box-shadow:0 12px 28px rgba(15,23,42,0.12);
+  overflow:auto;
+}
+
+.alumnos-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
 .alumnos-table thead th{
-  text-align:left; font-size:13px; color:#374151; background:#f3f4f6; padding:10px; position:sticky; top:0;
+  text-align:left;
+  font-size:13px;
+  color:#374151;
+  background:#f3f4f6;
+  padding:10px;
+  position:sticky;
+  top:0;
+  z-index:1;
 }
-.alumnos-table tbody td{ padding:10px; border-top:1px solid #f3f4f6; font-size:14px; color:#111827; }
-.row-actions{ display:flex; gap:10px; }
-.link{ background:transparent; border:none; color:#2563eb; cursor:pointer; padding:0; }
-.link:hover{ text-decoration:underline; }
-.link.danger{ color:#e11d48; }
 
-.badge{ padding:4px 8px; border-radius:999px; font-size:12px; font-weight:700; color:#fff; }
-.badge.green{ background:#10b981; }
-.badge.yellow{ background:#f59e0b; }
-.badge.red{ background:#ef4444; }
+.alumnos-table tbody td{
+  padding:10px;
+  border-top:1px solid #f3f4f6;
+  font-size:14px;
+  color:#111827;
+}
 
-.empty{ padding:16px; color:#6b7280; }
+/* Estado vacío / loading */
+.empty{
+  padding:16px;
+  color:#6b7280;
+  font-size:14px;
+}
+
+/* BADGES BASE */
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:3px 9px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.01em;
+}
+
+.badge-tag{
+  margin-left:6px;
+}
+
+.badge-tag.blue{
+  background:#e0f2fe;
+  color:#1d4ed8;
+}
+
+/* Semáforo: layout base */
+.badge-state{
+  min-width:88px;
+  justify-content:center;
+}
+
+/* === ESTADOS BRILLANTES UNIFICADOS (con !important para ganar siempre) === */
+
+/* 🟩 AL DÍA */
+.badge.green,
+.badge-state.green{
+  background:#22c55e !important;   /* verde brillante */
+  color:#f9fafb !important;
+  border:1px solid #16a34a !important;
+  box-shadow:0 2px 6px rgba(22,163,74,0.35);
+}
+
+/* 🟨 POR VENCER */
+.badge.yellow,
+.badge-state.yellow{
+  background:#eab308 !important;   /* amarillo intenso */
+  color:#111827 !important;
+  border:1px solid #ca8a04 !important;
+  box-shadow:0 2px 6px rgba(234,179,8,0.35);
+}
+
+/* 🟥 VENCIDO */
+.badge.red,
+.badge-state.red{
+  background:#ef4444 !important;   /* rojo brillante */
+  color:#f9fafb !important;
+  border:1px solid #dc2626 !important;
+  box-shadow:0 2px 6px rgba(239,68,68,0.35);
+}
+
+/* ACCIONES POR FILA */
+
+.row-actions{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+
+.link{
+  background:none;
+  border:none;
+  font-size:12px;
+  cursor:pointer;
+  padding:0;
+}
+
+.action-btn{
+  padding:4px 10px;
+  border-radius:999px;
+  border:1px solid #e5e7eb;
+  background:#f9fafb;
+  color:#111827;
+  font-weight:500;
+  transition:
+    background .15s ease,
+    border-color .15s ease,
+    color .15s ease,
+    box-shadow .15s ease,
+    transform .06s ease;
+}
+
+.action-btn:hover{
+  background:#ffffff;
+  border-color:#cbd5e1;
+  box-shadow:0 3px 10px rgba(15,23,42,0.16);
+  transform:translateY(-1px);
+}
+
+/* Eliminar */
+.action-btn.danger{
+  color:#b91c1c;
+  border-color:#fecaca;
+  background:#fef2f2;
+}
+
+.action-btn.danger:hover{
+  background:#fee2e2;
+  border-color:#fca5a5;
+}
+
+/* RESPONSIVE */
 
 @media (max-width: 720px){
-  .alumnos-header{ flex-direction:column; align-items:flex-start; gap:8px; }
-  .actions{ width:100%; }
-  .btn, .btn.secondary{ width:100%; }
+  .alumnos-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+
+  .actions{
+    width:100%;
+    justify-content:flex-start;
+  }
+
+  .actions .btn,
+  .actions .btn-primary{
+    flex:1 1 calc(50% - 4px);
+  }
+
+  .alumnos-tabs{
+    margin-bottom:10px;
+  }
 }

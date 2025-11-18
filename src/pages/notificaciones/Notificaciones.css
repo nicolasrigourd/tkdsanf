@@ -1,0 +1,302 @@
+/* ===== Layout general ===== */
+.notif-page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: #f9fafb;
+}
+
+.notif-content {
+  flex: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 16px 24px;
+}
+
+/* ===== Header ===== */
+.notif-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.notif-header h2 {
+  margin: 0;
+  font-weight: 700;
+  color: #111827;
+}
+
+.notif-summary {
+  display: flex;
+  gap: 14px;
+  font-size: 14px;
+  color: #4b5563;
+  flex-wrap: wrap;
+}
+
+.notif-ok {
+  color: #065f46;
+}
+
+.notif-warn {
+  color: #7c2d12;
+}
+
+/* ===== Aviso día ===== */
+.notif-banner-sendday {
+  margin-top: 12px;
+  background: #f9fafb;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+/* ===== Card de configuración ===== */
+.notif-card {
+  margin-top: 12px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.notif-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.notif-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: #374151;
+}
+
+.notif-input-number {
+  width: 120px;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.notif-input-number:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  outline: none;
+}
+
+.notif-hint {
+  margin: 8px 2px 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.notif-period-nav {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ===== Herramientas superiores ===== */
+.notif-tools {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.notif-search-input {
+  flex: 1 1 260px;
+  min-width: 220px;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.notif-search-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  outline: none;
+}
+
+.notif-tool-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+/* ===== Botones exclusivos de Notificaciones ===== */
+.notif-btn {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #111827;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.05s ease;
+}
+
+.notif-btn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.notif-btn:active {
+  background: #f3f4f6;
+  transform: translateY(1px);
+}
+
+.notif-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.notif-btn-primary {
+  background: #111827;
+  color: #ffffff;
+  border-color: #111827;
+}
+
+.notif-btn-primary:hover {
+  background: #0b1220;
+}
+
+.notif-btn-secondary {
+  background: #1f2937;
+  color: #ffffff;
+  border-color: #1f2937;
+}
+
+.notif-btn-secondary:hover {
+  background: #111827;
+}
+
+.notif-btn-ghost {
+  background: #ffffff;
+  color: #111827;
+  border-color: #e5e7eb;
+}
+
+.notif-btn-ghost:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.notif-btn-whats {
+  background: #ffffff;
+  color: #111827;
+  border-color: #e5e7eb;
+}
+
+/* ===== Tabla ===== */
+.notif-table-wrap {
+  margin-top: 12px;
+}
+
+.notif-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.notif-table thead th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #111827;
+}
+
+.notif-table th,
+.notif-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #f3f4f6;
+  text-align: left;
+}
+
+/* ===== Badges (estado enviado/pendiente) ===== */
+.notif-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #e5e7eb;
+}
+
+.notif-badge-green {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #bbf7d0;
+}
+
+.notif-badge-gray {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+/* ===== Acciones por fila ===== */
+.notif-row-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Links de acción (Deshacer / Marcar enviado) */
+.notif-link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.notif-link:hover {
+  text-decoration: underline;
+}
+
+.notif-link-danger {
+  color: #b91c1c;
+}
+
+/* ===== Estado vacío ===== */
+.notif-empty {
+  padding: 18px;
+  color: #6b7280;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .notif-summary {
+    gap: 8px;
+  }
+
+  .notif-period-nav {
+    margin-left: 0;
+  }
+}
